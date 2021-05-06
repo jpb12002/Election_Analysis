@@ -27,3 +27,35 @@ A Colorado Board of Elections employee has given us the the following tasks to c
 - Diana DeGette won the election with 272,892 votes and ~74% of the total votes cast. 
 
 ## Election Audit Summary
+This Python script enables the Colorado Board of Elections to quickly analyze the compiled election data to discover which candidate won the recent local congressional election. The script also shows the county with the highest voter turnout. We propose that the Board will be able to use this Python script to analyze future elections as well, albeit with a few simple modifications. For example, say the Board was interested in the turnout for each Colorado city in which the election was held. We replaced some of the county names in the "election_results.csv" data file with cities that are located in those counties. Jefferson County has been split into the cities of Golden, Kittredge, and Pine. Arapahoe County has been split into the cities of Centennial, Englewood, and Glendale. All of the candidate votes for those counties remained the same. The following images show the changes to the code script that now show a city specific analysis:
+
+- All "county" variables and strings have been changed into "city" variables and strings. This isn't necessary, but shows that the variables and strings can be changed to match any new data:
+
+```python
+ # 6a: Write a for loop to get the city from the city dictionary.
+    for city_name in city_votes:
+        # 6b: Retrieve the city vote count.
+        votes = city_votes.get(city_name)
+        # 6c: Calculate the percentage of votes for the city.
+        vote_percentage = float(votes) / float(total_votes) * 100
+         # 6d: Print the city results to the terminal.
+        city_results = (
+            f"{city_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        print(city_results)
+         # 6e: Save the city votes to a text file.
+        txt_file.write(city_results)
+         # 6f: Write an if statement to determine the winning city and get its vote count.
+        if (votes > largest_city_turnout):
+            largest_city_turnout = votes
+            largest_city_name = city_name
+
+    # 7: Print the city with the largest turnout to the terminal.
+    winning_city_summary = (
+        f"\n-------------------------\n"
+        f"Largest City Turnout: {largest_city_name}\n"
+        f"-------------------------\n")
+    print(winning_city_summary)
+
+    # 8: Save the city with the largest turnout to a text file.
+    txt_file.write(winning_city_summary)
+```
