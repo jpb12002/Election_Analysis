@@ -113,13 +113,13 @@ with open(file_to_load) as election_data:
         # the proposition list
         if prop_name not in prop_options:
 
-            # Add the candidate name to the candidate list.
+            # Add the proposition option to the proposition list.
             prop_options.append(prop_name)
 
-            # And begin tracking that candidate's voter count.
+            # And begin tracking that proposition option's voter count.
             prop_votes[prop_name] = 0
 
-        # Add a vote to that candidate's count
+        # Add a vote to that proposition option's count
         prop_votes[prop_name] += 1
 ```
         
@@ -147,7 +147,7 @@ with open(file_to_load) as election_data:
             prop_outcome = prop_name
             prop_percentage = prop_percent
 
-    # Print the winning candidate (to terminal)
+    # Print the winning proposition (to terminal)
     winning_prop_summary = (
         f"-------------------------\n"
         f"Proposition A Outcome: {prop_outcome}\n"
@@ -156,11 +156,10 @@ with open(file_to_load) as election_data:
         f"-------------------------\n")
     print(winning_prop_summary)
 
-    # Save the winning candidate's name to the text file
+    # Save the winning proposition option to the text file
     txt_file.write(winning_prop_summary)
 ```
 
 - The "election_analysis.txt" file now shows our results with the new Proposition A data added to the end of the document. Our hypothetical Proposition A won in a landslide!
 
 ![Image of Proposition A Analysis](https://github.com/jpb12002/Election_Analysis/blob/main/Proposition_Analysis.png)
-
