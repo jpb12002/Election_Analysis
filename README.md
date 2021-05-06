@@ -59,3 +59,7 @@ This Python script enables the Colorado Board of Elections to quickly analyze th
     # 8: Save the city with the largest turnout to a text file.
     txt_file.write(winning_city_summary)
 ```
+- Now the "election_analysis.txt" file shows our results with the new city data in place of the county data. The same changes can be made for new candidates that run in future elections. 
+
+![Image of City Election Analysis](https://github.com/jpb12002/Election_Analysis/blob/main/City_Analysis.png)
+
